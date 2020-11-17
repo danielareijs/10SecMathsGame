@@ -13,10 +13,23 @@ var getRandomEquation = function(){
   $('#mathEquation').text(equation);
 }
 
+var checkAnswer = function(){
+  var answerValue = $('#answer').val();
+    if(answerValue == currentAnswer){
+    $('#answer').val('');
+    getRandomEquation()
+ }
+};
 
 $('#playBtn').on('click', function(){
     currentEquation = getRandomEquation();
 })
+
+$('#answer').on('keyup', function(){
+    checkAnswer();
+  })
+
+
 
 
 });
