@@ -63,6 +63,50 @@ var countDown = function(){
     }
   }
 
+var getArithmetics = function(){
+    if($('#arithmetic-form input:checked').length == 0) {
+      alert('You must check at least one arithmetic');
+    } else {
+    var checked = $('#arithmetic-form input:checked');
+    var randomChecked = checked[Math.floor(Math.random()*checked.length)];
+    var checkboxId = randomChecked.id;
+
+
+
+      $('label').each(function(i){
+        var attribute = $(this).attr('for');
+        if(attribute == checkboxId){
+          var type = $(this).text();
+          console.log(type);
+        }
+      })
+
+
+
+    /*
+    var type;
+    switch (checkboxId){
+      case addition:
+        type = '+';
+        break;
+      case subtraction:
+        type = '-';
+        break;
+      case multiplication:
+        type = 'x'
+        break;
+      case division:
+        type = '/';
+    }
+    return type;
+    */
+
+
+  }
+};
+
+getArithmetics();
+
 $('#number-limit-range').on('input change', function(){
   numberLimit = $(this).val();
   $('#number-limit').text(numberLimit);
