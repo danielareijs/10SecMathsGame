@@ -6,6 +6,7 @@ var currentAnswer;
 var timeLeft;
 var timer;
 var score = 0;
+var highScore = 0;
 
 var getRandomEquation = function(){
   var num1 = Math.floor(Math.random() * 10) + 1;
@@ -34,6 +35,7 @@ var countDown = function(){
     } else {
       clearInterval(timer);
       $('#playBtn').text('Play Again').removeClass('hide');
+      newHighScore();
       score = 0;
     }
   }
@@ -52,5 +54,11 @@ var countDown = function(){
     checkAnswer();
   })
 
+  var newHighScore = function(){
+    if(highScore < score){
+      highScore = score;
+      $('#highScore').text(highScore);
+    }
+  }
 
 });
