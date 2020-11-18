@@ -1,3 +1,8 @@
+#equation-section,
+.game-options {
+  text-align: center;
+}
+
 .hide {
   display: none;
 }
