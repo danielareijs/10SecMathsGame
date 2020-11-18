@@ -7,10 +7,11 @@ var timeLeft;
 var timer;
 var score = 0;
 var highScore = 0;
+var numberLimit = 10;
 
 var getRandomEquation = function(){
-  var num1 = Math.floor(Math.random() * 10) + 1;
-  var num2 = Math.floor(Math.random() * 10) + 1;
+  var num1 = Math.floor(Math.random() * numberLimit) + 1;
+  var num2 = Math.floor(Math.random() * numberLimit) + 1;
   var equation = num1 + ' + ' + num2;
   currentAnswer = num1+num2;
   currentEquation = equation;
@@ -58,7 +59,14 @@ var countDown = function(){
     if(highScore < score){
       highScore = score;
       $('#highScore').text(highScore);
+
     }
   }
+
+$('#number-limit-range').on('input change', function(){
+  numberLimit = $(this).val();
+  $('#number-limit').text(numberLimit);
+})
+
 
 });

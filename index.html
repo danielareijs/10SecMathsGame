@@ -30,7 +30,7 @@
         <div class="col-12">
           <form id="option-form">
             <lable for="addition">+</lable>
-            <input type="checkbox" id="addition"/>
+            <input type="checkbox" id="addition" checked/>
             <lable for="subtraction" class="ml-3">-</lable>
             <input type="checkbox" id="subtraction"/>
             <lable for="multiplication" class="ml-3">x</lable>
@@ -40,8 +40,9 @@
           </form>
         </div>
         <div class="col-12">
-          <p>Number Limit</p>
-          <input type="range" />
+          <p class="mt-3">Number Limit</p>
+          <p id="number-limit">10</p>
+          <input id="number-limit-range" type="range" min="10" max="50" step="10" value="10"/>
         </div>
       </div>
     </div>
