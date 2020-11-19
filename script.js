@@ -72,7 +72,7 @@ var getArithmetics = function(){
     var checkboxId = randomChecked.id;
 
 
-
+      /* 1: GET ARITHMIC TYPE FOREACH
       $('label').each(function(i){
         var attribute = $(this).attr('for');
         if(attribute == checkboxId){
@@ -80,32 +80,31 @@ var getArithmetics = function(){
           console.log(type);
         }
       })
+      */
 
 
-
-    /*
-    var type;
-    switch (checkboxId){
-      case addition:
-        type = '+';
-        break;
-      case subtraction:
-        type = '-';
-        break;
-      case multiplication:
-        type = 'x'
-        break;
-      case division:
-        type = '/';
-    }
-    return type;
-    */
-
+      /* 2: GET ARITMIC TYPE SWITCH
+      var type;
+      switch (checkboxId){
+        case addition:
+          type = '+';
+          break;
+        case subtraction:
+          type = '-';
+          break;
+        case multiplication:
+          type = 'x'
+          break;
+        case division:
+          type = '/';
+      }
+      return type;
+      */
 
   }
 };
 
-getArithmetics();
+// getArithmetics();
 
 $('#number-limit-range').on('input change', function(){
   numberLimit = $(this).val();

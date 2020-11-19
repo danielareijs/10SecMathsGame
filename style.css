@@ -10,3 +10,18 @@
 .game-options {
   margin-top: 40px;
 }
+
+#answer {
+  display: block;
+  margin: 10px auto;
+  width: 100px;
+  height: 50px;
+  text-align: center;
+}
+
+.btn {
+  border: 1px solid black;
+  text-transform: uppercase;
+  font-size: 12px;
+  margin-bottom: 20px;
+}
