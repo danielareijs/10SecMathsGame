@@ -9,20 +9,51 @@ var score = 0;
 var highScore = 0;
 var numberLimit = 10;
 
-var getRandomEquation = function(){
-  var num1 = Math.floor(Math.random() * numberLimit) + 1;
-  var num2 = Math.floor(Math.random() * numberLimit) + 1;
-  var equation = num1 + ' + ' + num2;
-  currentAnswer = num1+num2;
-  currentEquation = equation;
-  $('#mathEquation').text(equation);
-}
+var generateEquation = function(){
+
+  if($('#arithmetic-form input:checked').length == 0) {
+    alert('You must check at least one arithmetic');
+  } else {
+  var checked = $('#arithmetic-form input:checked');
+  var randomChecked = checked[Math.floor(Math.random()*checked.length)];
+  var arithmicType = randomChecked.id;
+
+    var num1 = Math.floor(Math.random() * numberLimit) + 1;
+    var num2 = Math.floor(Math.random() * numberLimit) + 1;
+
+
+  switch (arithmicType){
+    case "addition":
+      currentEquation = num1 + ' + ' + num2;
+      currentAnswer = num1 + num2;
+      break;
+    case "subtraction":
+      if(num1 < num2){
+        currentEquation = num2 + ' - ' + num1;
+        currentAnswer = num2 - num1;
+      } else {
+        currentEquation = num1 + ' - ' + num2;
+        currentAnswer = num1 - num2;
+      }
+      break;
+    case "multiplication":
+      currentEquation = num1 + ' * ' + num2;
+      currentAnswer = num1 * num2;
+      break;
+    case "division":
+        currentEquation = (num1 * num2) + ' / ' + num1;
+        currentAnswer = num2;
+    }
+  }
+
+  $('#mathEquation').text(currentEquation);
+};
 
 var checkAnswer = function(){
   var answerValue = $('#answer').val();
     if(answerValue == currentAnswer){
     $('#answer').val('');
-    getRandomEquation()
+    generateEquation()
     timeLeft ++;
     score ++;
     $('#score').text(score);
@@ -46,7 +77,7 @@ var countDown = function(){
       timeLeft = 10;
       $('#score').text(score);
       timer = setInterval(countDown, 1000);
-      currentEquation = getRandomEquation();
+      currentEquation = generateEquation();
       $('#playBtn').addClass('hide');
   })
 
@@ -63,48 +94,6 @@ var countDown = function(){
     }
   }
 
-var getArithmetics = function(){
-    if($('#arithmetic-form input:checked').length == 0) {
-      alert('You must check at least one arithmetic');
-    } else {
-    var checked = $('#arithmetic-form input:checked');
-    var randomChecked = checked[Math.floor(Math.random()*checked.length)];
-    var checkboxId = randomChecked.id;
-
-
-      /* 1: GET ARITHMIC TYPE FOREACH
-      $('label').each(function(i){
-        var attribute = $(this).attr('for');
-        if(attribute == checkboxId){
-          var type = $(this).text();
-          console.log(type);
-        }
-      })
-      */
-
-
-      /* 2: GET ARITMIC TYPE SWITCH
-      var type;
-      switch (checkboxId){
-        case addition:
-          type = '+';
-          break;
-        case subtraction:
-          type = '-';
-          break;
-        case multiplication:
-          type = 'x'
-          break;
-        case division:
-          type = '/';
-      }
-      return type;
-      */
-
-  }
-};
-
-// getArithmetics();
 
 $('#number-limit-range').on('input change', function(){
   numberLimit = $(this).val();
